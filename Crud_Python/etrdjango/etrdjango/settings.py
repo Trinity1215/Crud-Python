@@ -92,7 +92,7 @@ DATABASES = {
         'NAME': 'base_bici',
         'USER': 'root',
         'PASSWORD': '',
-        'PORT': '3307',
+        'PORT': '3306',
         'HOST': 'localhost',
     }
 }
