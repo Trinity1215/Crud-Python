@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Bicicleta
+from .models import Bicicleta, Garantia
 from .forms import BicicletaForm
 from django.urls import reverse
 from django.shortcuts import redirect
+from datetime import datetime, timedelta
 # Create your views here.
 
 def index (request):
@@ -44,4 +45,5 @@ def eliminar(request, id):
 
 def admin_interface(request):
     return redirect('admin:index')
+
 
