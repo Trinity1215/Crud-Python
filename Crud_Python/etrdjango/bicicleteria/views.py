@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Bicicleta
 from .forms import BicicletaForm
 from django.urls import reverse
+from django.shortcuts import redirect
 # Create your views here.
 
 def index (request):
@@ -40,3 +41,7 @@ def eliminar(request, id):
     bicicleta = Bicicleta.objects.get(id=id)
     bicicleta.delete()
     return redirect ('bicicletas')
+
+def admin_interface(request):
+    return redirect('admin:index')
+
