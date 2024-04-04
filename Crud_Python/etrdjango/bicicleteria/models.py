@@ -33,14 +33,28 @@ class Bicicleta(models.Model):
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE, verbose_name='Marca')
     imagen = models.ImageField(upload_to='imagenes/', verbose_name='Imagen', null=True)
     descripcion = models.TextField(verbose_name='Descripcion', null=True)
-    precio = models.DecimalField(max_digits=10, decimal_places=3, validators=[MinValueValidator(0)], verbose_name='Precio')
+    precio = models.DecimalField(max_digits=7, decimal_places=3, validators=[MinValueValidator(0)], verbose_name='Precio')
     mano_de_obra = models.DecimalField(max_digits=10, decimal_places=3, validators=[MinValueValidator(0)], verbose_name='Valor de mano de obra', null=True, blank=True)
     fecha = models.DateField(default=timezone.now, verbose_name='Fecha de ingreso')
     estado = models.ForeignKey(EstadoBicicleta, on_delete=models.SET_NULL, null=True)
+    valor_total = models.DecimalField(max_digits=10, decimal_places=3, verbose_name='Valor total', null=True, blank=True)
 
     def __str__(self):
         return f"Marca: {self.marca.nombre} - Descripcion: {self.descripcion}"
 
+    def calcular_valor_total(self):
+        if self.precio is not None and self.mano_de_obra is not None:
+            return self.precio + self.mano_de_obra
+        elif self.precio is not None:
+            return self.precio
+        elif self.mano_de_obra is not None:
+            return self.mano_de_obra
+        else:
+            return None
+
+    def save(self, *args, **kwargs):
+        self.valor_total = self.calcular_valor_total()
+        super().save(*args, **kwargs)
 
     def fecha_terminacion_garantia(self):
         if self.estado.nombre == EstadoBicicleta.TERMINADO: 
@@ -55,6 +69,7 @@ def crear_garantia_si_terminado(sender, instance, created, **kwargs):
             fecha_terminacion=instance.fecha_terminacion_garantia(),
             bicicleta=instance
         )
+
 
 class Garantia(models.Model):
     idGarantia = models.AutoField(primary_key=True)
