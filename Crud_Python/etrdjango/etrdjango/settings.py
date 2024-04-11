@@ -86,14 +86,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 ...
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'base_bici',
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'railway',
+        'PASSWORD': 'yBagJnycCpsSlayYukUsvMxUsvqeyfqD',
         'PORT': '3306',
-        'HOST': 'localhost',
+        'HOST': 'mysql.railway.internal',
     }
 }
 
