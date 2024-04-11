@@ -90,11 +90,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'base_bici',
-        'USER': 'railway',
-        'PASSWORD': 'yBagJnycCpsSlayYukUsvMxUsvqeyfqD',
-        'PORT': '3306',
-        'HOST': 'mysql.railway.internal',
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'TshWInwkosaICBFIReCBmJxdHGYBMcYA',
+        'HOST': 'monorail.proxy.rlwy.net',
+        'PORT': '32151',
+
     }
 }
 
