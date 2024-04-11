@@ -93,7 +93,7 @@ DATABASES = {
         'NAME': 'railway',
         'USER': 'root',
         'PASSWORD': 'TshWInwkosaICBFIReCBmJxdHGYBMcYA',
-        'HOST': 'monorail.proxy.rlwy.net',
+        'HOST': 'railway.proxy.rlwy.net',
         'PORT': '32151',
 
     }
