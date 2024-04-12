@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os 
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -88,16 +89,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
-        'USER': 'root',
-        'PASSWORD': 'TshWInwkosaICBFIReCBmJxdHGYBMcYA',
-        'HOST': 'railway.proxy.rlwy.net',
-        'PORT': '32151',
-
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-}
+
 
 ...
 
