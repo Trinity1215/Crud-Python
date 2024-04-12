@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('bicicleteria.urls')),
+    path('', include('homepage.urls')),
 ]
 
 # Servir archivos estáticos durante el desarrollo
